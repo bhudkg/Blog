@@ -21,6 +21,14 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save()
         return Response(serializer.data)
     
+
+def your_view(request):
+    viewset = PostViewSet.as_view({'get': 'list'})
+    response = viewset(request)
+    data = response.data
+    print(data)
+    return render(request, 'index.html', {'data': data})
+    
     
 
 
